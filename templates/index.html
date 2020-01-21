@@ -35,7 +35,35 @@
             <p class="part">Python, Tensorflow, Numpy, Pandas</p>
         </div>
 
+        <section class="application-section">
+            
+            <form action="/predict" id="form" class="container">
+                <!-- public chat info -->
+                <div class="row" >
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter french text.." name="french-text">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" value="Translate" style="width: 205px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10" id="show_hide">
+                        <p class="card-b" ></p>
+                    </div>
+                    
+                </div>
+            </form>
+
+        </section>
     </div>
+
     <footer>
         <div class="container modified">
             <p class="text-footer">

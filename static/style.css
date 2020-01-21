@@ -136,7 +136,9 @@ i{
     margin-bottom: 2px;
 }
 footer{
-    height:100px;
+    position: absolute;
+    bottom: 0;
+    height:80px;
     border-top:1px solid #DDD
 }
 .new-user-joined{
