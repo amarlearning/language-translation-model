@@ -160,6 +160,27 @@ footer{
 .text-footer>a:hover{
     text-decoration:underline!important
 }
+
+#pageloader
+{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 24%;
+  position: fixed;
+  width: 59.5%;
+  z-index: 9999;
+  margin-top: -30px;
+}
+
+#pageloader img
+{
+  left: 50%;
+  margin-left: -32px;
+  margin-top: -32px;
+  position: absolute;
+  top: 50%;
+}
+
 @media screen and (max-width:700px){
     .modified{
         width:100%
