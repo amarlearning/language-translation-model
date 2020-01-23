@@ -1,3 +1,4 @@
+import pickle
 import string
 import numpy as np
 import pandas as pd
@@ -49,30 +50,19 @@ def get_word(n, tokenizer):
             return word
     return None
 
-def tokenizer(corpus):
-    tokenizer = Tokenizer()
-    tokenizer.fit_on_texts(corpus)
-    return tokenizer
-
 def encode_sequences(tokenizer, length, text):
     sequences = tokenizer.texts_to_sequences(text)
     sequences = pad_sequences(sequences, maxlen=length, padding='post')
     return sequences
 
 def create_tokenizer():
-    data = pd.read_csv('https://github.com/amarlearning/neural-machine-translation/raw/master/dataset/fra-eng/fra.tsv', delimiter='\t')
-    data = data.iloc[:55000, :]
-    english = data.english.values
-    french = data.french.values
-    english = [s.translate(str.maketrans('', '', string.punctuation)) for s in english]
-    french = [s.translate(str.maketrans('', '', string.punctuation)) for s in french]
-    english = [s.lower() if isinstance(s, str) else s for s in english]
-    french = [s.lower() if isinstance(s, str) else s for s in french]
-    english_tok = tokenizer(english)
-    french_tok = tokenizer(french)
-    print("tokenizer done")
-    return (french_tok, english_tok)
+    with open('model/english_tokenizer.pickle', 'rb') as handle:
+        english_tok = pickle.load(handle)
 
+    with open('model/french_tokenizer.pickle', 'rb') as handle:
+        french_tok = pickle.load(handle)
+
+    return (french_tok, english_tok)
 
 def preprocessing_input_text(french):
     french = [s.translate(str.maketrans('', '', string.punctuation)) for s in french]
