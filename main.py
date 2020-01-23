@@ -17,15 +17,11 @@ def hello():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-
     french = np.array([request.form['frenchtext']])
     french = preprocessing_input_text(french)
     model = load_model('model/weights-improvement.hdf5')
     prediction = model.predict_classes(french.reshape(french.shape[0], french.shape[1]))
     text = predict_text(prediction)[0]
-
-    print(text)
-
     return text
 
 def predict_text(prediction):
